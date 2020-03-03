@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.cheamenghuy.petproject.newsfeed.NewsFeed;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,7 +72,7 @@ public class Login extends AppCompatActivity {
         }else if(null!=checkUser(username,password))
         {
             String userDb = checkUser(username,password);
-            Intent intent = new Intent(Login.this,MainApp.class);
+            Intent intent = new Intent(Login.this,NewsFeed.class);
             intent.putExtra("uname",userDb);
             startActivity(intent);
         }
@@ -80,7 +82,7 @@ public class Login extends AppCompatActivity {
 //            name_login.setText("");
 //            pw_login.setText("");
 //            name_login.requestFocus();
-            Login1();
+            Login1(username,password);
         }
     }
 
@@ -101,19 +103,21 @@ public class Login extends AppCompatActivity {
         }
         return null;
     }
-    public void Login1(){
-        String url = "http://172.23.0.101/petproject1/login.php";
+    public String Login1(final String username, String password){
+        String url = "http://172.20.10.2:8000/api/login/"+username+"/"+password;
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.e("DATA_JSON",response.toString());
                 try{
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
 
                     if(success.equals("1"))
                     {
-                        Intent intent = new Intent(Login.this,MainApp.class);
+                        Intent intent = new Intent(Login.this,NewsFeed.class);
+                        intent.putExtra("uname",username);
                         startActivity(intent);
                     }else
                     {
@@ -122,6 +126,7 @@ public class Login extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.e("ERROR_JSON",e.toString());
                 }
             }
         }, new Response.ErrorListener() {
@@ -140,5 +145,6 @@ public class Login extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+        return username;
     }
 }

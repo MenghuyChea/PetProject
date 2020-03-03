@@ -32,7 +32,7 @@ public class Register extends AppCompatActivity {
     EditText name_reg,email_reg,pw_reg,phone_reg;
     Button btn_reg_reg;
     ProgressBar loading;
-    static String URL_REGIST = "http://172.23.0.101/petproject1/register.php";
+    static String URL_REGIST = "http://172.20.10.2:8000/api/register";
     TextView btn_login_reg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,11 +106,15 @@ public class Register extends AppCompatActivity {
         final String phone = phone_reg.getText().toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST, new Response.Listener<String>() {
+
+
             @Override
             public void onResponse(String response) {
                 try{
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
+
+//                    Log.e("JSON_DATA",response);
                     if(success.equals("1"))
                     {
                         Intent intent = new Intent(Register.this,Login.class);
