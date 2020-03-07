@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/btn_home"
+        android:icon="@drawable/home"
+        android:title="Home"/>
+    <item
+        android:id="@+id/btn_search"
+        android:icon="@drawable/search"
+        android:title="Search"/>
+    <item
+        android:id="@+id/btn_care"
+        android:title="Care"
+        android:icon="@drawable/care"/>
+    <item
+        android:id="@+id/btn_notification"
+        android:icon="@drawable/notification"
+        android:title="Notification"/>
+    <item
+        android:icon="@drawable/person"
+        android:title="Person"
+        android:id="@+id/btn_person"/>
+</menu>

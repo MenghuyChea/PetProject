@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.cheamenghuy.petproject.care.CareActivity;
 import com.cheamenghuy.petproject.R;
 import com.cheamenghuy.petproject.adapter.NewsAdapter;
 import com.cheamenghuy.petproject.model.NewsModel;
@@ -31,6 +33,7 @@ public class NewsFeed extends AppCompatActivity {
     FloatingActionButton btn_post;
     RecyclerView recyclerView;
     ArrayList<NewsModel> arrayList;
+    ImageView btn_care;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,15 @@ public class NewsFeed extends AppCompatActivity {
         recyclerView=findViewById(R.id.recycleView);
 
         btn_post = findViewById(R.id.btn_add);
+        btn_care = findViewById(R.id.btn_care);
+
+        btn_care.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NewsFeed.this, CareActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btn_post.setOnClickListener(new View.OnClickListener() {
             @Override

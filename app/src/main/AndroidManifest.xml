@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".newsfeed.NewsPost"></activity>
+        <activity android:name=".care.Care1Activity"></activity>
+        <activity android:name=".care.CareActivity" />
+        <activity android:name=".newsfeed.NewsPost" />
         <activity android:name=".newsfeed.NewsFeed" />
         <activity android:name=".Login" />
         <activity android:name=".Register" />
