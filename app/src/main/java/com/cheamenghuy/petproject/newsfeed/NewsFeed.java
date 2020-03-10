@@ -35,21 +35,27 @@ public class NewsFeed extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_feed);
-        recyclerView=findViewById(R.id.recycleView);
+        recyclerView=findViewById(R.id.recycleView1);
 
         btn_post = findViewById(R.id.btn_add);
+
 
         btn_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NewsFeed.this,NewsPost.class);
-                startActivity(intent);
+                Bundle extras = getIntent().getExtras();
+                if(extras !=null) {
+                    String value = extras.getString("uname");
+                    Intent intent = new Intent(NewsFeed.this,NewsPost.class);
+                    intent.putExtra("uname",value);
+                    startActivity(intent);
+                }
             }
         });
 
         arrayList = new ArrayList<>();
-        NewsAdapter adapter = new NewsAdapter(getApplicationContext(),arrayList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        NewsAdapter adapter = new NewsAdapter(getApplicationContext(),arrayList);
         recyclerView.setAdapter(adapter);
 
     }
@@ -69,7 +75,7 @@ public class NewsFeed extends AppCompatActivity {
                     JSONObject object = new JSONObject(response);
                     JSONArray array = object.getJSONArray("data");
 
-                    Log.e("model",response );
+                    Log.e("model",array.toString());
 
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject object1 = array.getJSONObject(i);
@@ -78,12 +84,13 @@ public class NewsFeed extends AppCompatActivity {
                         model.setName_pro(object1.getString("first_name"));
                         model.setDesc(object1.getString("email"));
                         model.setImg_post(object1.getString("avatar"));
+                        arrayList.add(model);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                NewsAdapter adapter = new NewsAdapter(getApplicationContext(),arrayList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                NewsAdapter adapter = new NewsAdapter(getApplicationContext(),arrayList);
                 recyclerView.setAdapter(adapter);
             }
         }, new Response.ErrorListener() {

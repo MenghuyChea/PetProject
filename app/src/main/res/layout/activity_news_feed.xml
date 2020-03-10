@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="#FFFCFC"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".newsfeed.NewsFeed">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -26,7 +27,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleView"
+        android:id="@+id/recycleView1"
         android:layout_width="match_parent"
         android:layout_height="465dp">
 
@@ -41,7 +42,6 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
         android:src="@drawable/btn_add">
-
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     <LinearLayout

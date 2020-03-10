@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity {
         return null;
     }
     public String Login1(final String username, String password){
-        String url = "http://172.20.10.2:8000/api/login/"+username+"/"+password;
+        String url = "http://192.168.19.137:8000/api/login/"+username+"/"+password;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -126,7 +126,6 @@ public class Login extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.e("ERROR_JSON",e.toString());
                 }
             }
         }, new Response.ErrorListener() {
