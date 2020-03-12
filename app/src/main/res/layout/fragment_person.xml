@@ -1,18 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/design_default_color_primary"
     android:layout_height="match_parent"
     tools:context=".person.PersonFragment">
+   <LinearLayout
+       android:id="@+id/path_one"
+       android:orientation="vertical"
+       android:gravity="center"
+       android:background="@color/design_default_color_primary"
+       android:layout_width="match_parent"
+       android:layout_height="200dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:textColor="@color/Write"
-        android:gravity="center"
-        android:textSize="35sp"
+       <ImageView
+           android:id="@+id/img_profile"
+           android:src="@drawable/person"
+           android:layout_width="150dp"
+           android:layout_height="150dp"/>
+       <TextView
+           android:id="@+id/tv_name_profile"
+           android:text="Soy Sin"
+           android:textColor="@color/Write"
+           android:textSize="30dp"
+           android:gravity="center"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
+
+   </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_below="@+id/path_one"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Person" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:padding="5dp"
+            android:id="@+id/btn_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</FrameLayout>
+            <ImageView
+                android:layout_gravity="center"
+                android:background="@drawable/post"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:id="@+id/tv_post_option"
+                android:text="Post"
+                android:textSize="15dp"
+                android:textColor="@color/Black"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="5dp"
+            android:id="@+id/btn_change_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:background="@drawable/person"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:id="@+id/tv_change_username_option"
+                android:text="Change Username"
+                android:textSize="15dp"
+                android:textColor="@color/Black"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="5dp"
+            android:id="@+id/btn_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:background="@drawable/key"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:id="@+id/tv_change_password_option"
+                android:text="Change password"
+                android:textSize="15dp"
+                android:textColor="@color/Black"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="5dp"
+            android:id="@+id/btn_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center"
+                android:background="@drawable/logout"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+            <TextView
+                android:id="@+id/tv_logout_option"
+                android:text="Logout"
+                android:textSize="15dp"
+                android:textColor="@color/Black"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

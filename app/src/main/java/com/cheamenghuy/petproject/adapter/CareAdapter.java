@@ -1,7 +1,7 @@
 package com.cheamenghuy.petproject.adapter;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cheamenghuy.petproject.R;
+import com.cheamenghuy.petproject.care.TypePetsActivity;
 import com.cheamenghuy.petproject.holder.CareHolder;
 import com.cheamenghuy.petproject.model.CareModel;
 
@@ -32,10 +33,19 @@ public class CareAdapter extends RecyclerView.Adapter<CareHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CareHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CareHolder holder, final int position) {
 
         holder.textView_name_care.setText(careModels.get(position).getName_type_of_care());
         holder.imageView_care.setImageResource(careModels.get(position).getImg_type_of_care());
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TypePetsActivity.class);
+                intent.putExtra("CONTEXT",position);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

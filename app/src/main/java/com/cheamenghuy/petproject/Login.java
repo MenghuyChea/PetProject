@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.cheamenghuy.petproject.care.CareActivity;
 import com.cheamenghuy.petproject.newsfeed.NewsFeed;
 
 import org.json.JSONException;
@@ -72,7 +73,7 @@ public class Login extends AppCompatActivity {
         }else if(null!=checkUser(username,password))
         {
             String userDb = checkUser(username,password);
-            Intent intent = new Intent(Login.this,NewsFeed.class);
+            Intent intent = new Intent(Login.this, CareActivity.class);
             intent.putExtra("uname",userDb);
             startActivity(intent);
         }
