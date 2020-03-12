@@ -32,7 +32,7 @@ public class Register extends AppCompatActivity {
     EditText name_reg,email_reg,pw_reg,phone_reg;
     Button btn_reg_reg;
     ProgressBar loading;
-    static String URL_REGIST = "http://172.20.10.2:8000/api/register";
+    static String URL_REGIST = "http://192.168.19.137:8000/api/register";
     TextView btn_login_reg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
