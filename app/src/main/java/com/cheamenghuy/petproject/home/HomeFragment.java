@@ -17,6 +17,7 @@ import com.cheamenghuy.petproject.adapter.CareAdapter;
 import com.cheamenghuy.petproject.adapter.NewsAdapter;
 import com.cheamenghuy.petproject.model.CareModel;
 import com.cheamenghuy.petproject.model.NewsModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     NewsAdapter adapter;
     ArrayList<NewsModel> careModels;
+    FloatingActionButton floatingActionButton;
     View view;
 
     public HomeFragment() {
@@ -42,6 +44,8 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView=view.findViewById(R.id.recycleView_home);
+
+        floatingActionButton = view.findViewById(R.id.btn_add);
         careModels = new ArrayList<>();
         for(int i = 0 ; i<4; i++){
             NewsModel model = new NewsModel();
@@ -54,6 +58,12 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         adapter = new NewsAdapter(view.getContext(),careModels);
         recyclerView.setAdapter(adapter);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new PostFragment()).commit();
+            }
+        });
         return view;
     }
 }

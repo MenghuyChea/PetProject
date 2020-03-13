@@ -23,8 +23,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.cheamenghuy.petproject.care.CareActivity;
-import com.cheamenghuy.petproject.newsfeed.NewsFeed;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -117,7 +115,7 @@ public class Login extends AppCompatActivity {
 
                     if(success.equals("1"))
                     {
-                        Intent intent = new Intent(Login.this,NewsFeed.class);
+                        Intent intent = new Intent(Login.this,CareActivity.class);
                         intent.putExtra("uname",username);
                         startActivity(intent);
                     }else

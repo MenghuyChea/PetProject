@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#FFFCFC"
     android:layout_height="match_parent"
-    tools:context=".newsfeed.NewsPost">
+    android:orientation="vertical"
+    tools:context=".home.PostFragment">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -33,7 +30,7 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -48,7 +45,7 @@
         <TextView
             android:id="@+id/news_namepropost"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/news_imgpro"
+            android:layout_toRightOf="@+id/news_propost"
             android:text="MengHuy"
             android:textSize="25sp"
             android:layout_width="210dp"
@@ -57,6 +54,7 @@
             android:textStyle="bold"/>
 
         <Button
+            android:layout_alignParentRight="true"
             android:id="@+id/btn_post"
             android:layout_gravity="end"
             android:background="@drawable/post_btn"
@@ -66,7 +64,7 @@
             android:layout_width="80dp"
             android:layout_height="50dp"/>
 
-    </LinearLayout>
+    </RelativeLayout>
     <LinearLayout
         android:orientation="vertical"
         android:padding="10dp"
@@ -82,62 +80,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-            <ImageView
-                android:src="@mipmap/ic_launcher"
-                android:layout_marginTop="10dp"
-                android:id="@+id/image_post"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"/>
-            <Button
-                android:id="@+id/btn_addphotos"
-                android:hint="Choose image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+        <ImageView
+            android:src="@mipmap/ic_launcher"
+            android:layout_marginTop="10dp"
+            android:id="@+id/image_post"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"/>
+        <Button
+            android:id="@+id/btn_addphotos"
+            android:hint="Choose image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>
 
-    <LinearLayout
-        android:foregroundGravity="bottom"
-        android:layout_gravity="bottom"
-        android:background="#FFFF"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="80dp">
-
-        <ImageView
-            android:layout_marginRight="30dp"
-            android:id="@+id/btn_homepost"
-            android:src="@drawable/home"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-
-        <ImageView
-            android:layout_marginRight="30dp"
-            android:id="@+id/btn_searchpost"
-            android:src="@drawable/search"
-            android:layout_width="60dp"
-            android:layout_height="60dp"/>
-
-        <ImageView
-            android:layout_marginRight="30dp"
-            android:id="@+id/btn_carepost"
-            android:src="@drawable/care"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-
-        <ImageView
-            android:layout_marginRight="30dp"
-            android:id="@+id/btn_notificationpost"
-            android:src="@drawable/notification"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-
-        <ImageView
-            android:id="@+id/btn_personpost"
-            android:src="@drawable/person"
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
-    </LinearLayout>
 </LinearLayout>
