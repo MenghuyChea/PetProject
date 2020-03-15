@@ -18,7 +18,6 @@
         <activity android:name=".PetDescription"></activity>
         <activity android:name=".care.TypePetsActivity" />
         <activity android:name=".care.CareActivity" />
-        <activity android:name=".newsfeed.NewsPost" />
         <activity android:name=".newsfeed.NewsFeed" />
         <activity android:name=".Login" />
         <activity android:name=".Register" />
