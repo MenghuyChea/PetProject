@@ -37,8 +37,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull NewsHolder holder, final int position) {
-        Picasso.with(context).load(arrayList.get(position).getImg_post()).into(holder.img_post);
-        Picasso.with(context).load(arrayList.get(position).getImg_pro()).into(holder.img_pro);
+        Picasso.get().load(arrayList.get(position).getImg_post()).into(holder.img_post);
+        Picasso.get().load(arrayList.get(position).getImg_pro()).into(holder.img_pro);
         holder.name_pro.setText(arrayList.get(position).getName_pro());
         holder.desc.setText(arrayList.get(position).getDesc());
 //        Glide.with(context).load(arrayList.get(position).getImg_pro()).apply(options).into(holder.img_pro);
