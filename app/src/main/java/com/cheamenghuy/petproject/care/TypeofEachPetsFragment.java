@@ -1,11 +1,12 @@
 package com.cheamenghuy.petproject.care;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,13 @@ import com.cheamenghuy.petproject.model.TypePetsModel;
 
 import java.util.ArrayList;
 
-public class TypePetsActivity extends AppCompatActivity {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class TypeofEachPetsFragment extends Fragment {
+    int position;
+
     String[][]  dogs={
             {"Hasky","https://www.pets4homes.co.uk/images/articles/2035/large/the-siberian-husky-and-its-history-with-the-chukchi-people-53fc5b5fa1215.jpg"},
             {"Golden Retriever","https://images.localist.com/photos/32176080498196/original/982edd3c6bd6bb91197d611bbc53f24bf76210c0.jpg"},
@@ -49,26 +56,7 @@ public class TypePetsActivity extends AppCompatActivity {
     TypePetsAdapter adapter;
     ArrayList<TypePetsModel> listModels;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_type_pets);
-
-        recyclerView = findViewById(R.id.recycleView_pets);
-        listModels = new ArrayList<>();
-        Intent intent = getIntent();
-        int position = intent.getIntExtra("CONTEXT",0);
-        String[][] pets = check(position);
-        for(int i=0 ; i<pets.length ; i++){
-            TypePetsModel model = new TypePetsModel();
-            model.setImg(pets[i][1]);
-            model.setName(pets[i][0]);
-            listModels.add(model);
-        }
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new TypePetsAdapter(this,listModels);
-        recyclerView.setAdapter(adapter);
-    }
+    View root;
 
     private String[][] check(int position){
         String[][] arrpets={};
@@ -87,5 +75,30 @@ public class TypePetsActivity extends AppCompatActivity {
                 break;
         }
         return arrpets;
+    }
+    public TypeofEachPetsFragment(int position) {
+        this.position = position;
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        root = inflater.inflate(R.layout.fragment_type_each_pet, container, false);
+        recyclerView = root.findViewById(R.id.recycleView_pets);
+        listModels = new ArrayList<>();
+        String[][] pets = check(position);
+        for(int i=0 ; i<pets.length ; i++){
+            TypePetsModel model = new TypePetsModel();
+            model.setImg(pets[i][1]);
+            model.setName(pets[i][0]);
+            listModels.add(model);
+        }
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new TypePetsAdapter(root.getContext(),listModels);
+        recyclerView.setAdapter(adapter);
+        return root;
     }
 }

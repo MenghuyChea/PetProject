@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CareFragment extends Fragment {
+public class CareFragment extends Fragment implements CareAdapter.OnClickItemListener{
 
     RecyclerView recyclerView;
     CareAdapter adapter;
@@ -55,6 +55,13 @@ public class CareFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(root.getContext(),2));
         adapter = new CareAdapter(root.getContext(),careModels);
         recyclerView.setAdapter(adapter);
+        adapter.setOnClickItemListener(CareFragment.this);
         return root;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
+        getFragmentManager().beginTransaction().replace(R.id.frame_layout,new TypeofEachPetsFragment(position)).commit();
     }
 }

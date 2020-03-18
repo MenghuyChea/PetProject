@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ public class Register extends AppCompatActivity {
     EditText name_reg,email_reg,pw_reg,phone_reg;
     Button btn_reg_reg;
     ProgressBar loading;
-    static String URL_REGIST = "http://192.168.19.137:8000/api/register";
+    static String URL_REGIST = "http://192.168.200.228:8000/api/register";
     TextView btn_login_reg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +115,7 @@ public class Register extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
 
-//                    Log.e("JSON_DATA",response);
+                    Log.e("JSON_DATA",response);
                     if(success.equals("1"))
                     {
                         Intent intent = new Intent(Register.this,Login.class);

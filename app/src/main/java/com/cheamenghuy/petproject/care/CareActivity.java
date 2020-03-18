@@ -28,7 +28,7 @@ public class CareActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(navigation);
 
         //default fragment
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new CareFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new HomeFragment()).commit();
       }
       private BottomNavigationView.OnNavigationItemSelectedListener navigation = new
               BottomNavigationView.OnNavigationItemSelectedListener() {

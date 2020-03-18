@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cheamenghuy.petproject.R;
@@ -37,12 +38,12 @@ public class TypePetsAdapter extends RecyclerView.Adapter<TypePetsHolder> {
 
         holder.textView_name_type_of_pets.setText(listModels.get(position).getName());
         Picasso.get().load(listModels.get(position).getImg()).into(holder.imageView_type_of_pets);
-/*
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+
+       /* holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TypeOfPetsFragment.class);
-                context.startActivity(intent);
+                FragmentManager fragmentManager;
+                fragmentManager.beginTransaction().replace(R.id.frame_layout)
             }
         });*/
 
