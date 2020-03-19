@@ -54,7 +54,7 @@
                 android:layout_height="250dp"/>
 
             <ImageView
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:id="@+id/btn_like"
                 android:src="@drawable/like"
@@ -63,8 +63,7 @@
                 android:layout_height="40dp"/>
 
             <ImageView
-                android:layout_marginLeft="70dp"
-                android:layout_toRightOf="@+id/btn_like"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:id="@+id/btn_comment"
                 android:src="@drawable/comment"
@@ -73,8 +72,8 @@
                 android:layout_height="40dp"/>
 
             <ImageView
-                android:layout_marginLeft="70dp"
-                android:layout_toRightOf="@+id/btn_comment"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
                 android:id="@+id/btn_send"
                 android:src="@drawable/send"

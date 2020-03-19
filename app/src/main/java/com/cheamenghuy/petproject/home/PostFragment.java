@@ -25,6 +25,7 @@ import com.cheamenghuy.petproject.R;
 public class PostFragment extends Fragment {
 
     Button button_choose;
+    ImageView button_back;
     View root;
     Uri imageUri;
     final int CODE_GALLERY_REQUEST= 999;
@@ -44,6 +45,7 @@ public class PostFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_post, container, false);
         button_choose = root.findViewById(R.id.btn_addphotos);
         imageView = root.findViewById(R.id.image_post);
+        button_back = root.findViewById(R.id.btn_backpost);
 
         button_choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,12 @@ public class PostFragment extends Fragment {
             }
 
 
+        });
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new HomeFragment()).commit();
+            }
         });
 
         return root;
