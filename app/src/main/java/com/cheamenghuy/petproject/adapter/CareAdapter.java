@@ -58,7 +58,6 @@ public class CareAdapter extends RecyclerView.Adapter<CareAdapter.CareHolder> {
     }
     public class CareHolder extends RecyclerView.ViewHolder {
 
-        public CardView cardView;
         public ImageView imageView_care;
         public TextView textView_name_care;
         public CareHolder(@NonNull View itemView) {

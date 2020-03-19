@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.cheamenghuy.petproject.R;
 import com.cheamenghuy.petproject.adapter.TypePetsAdapter;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TypeofEachPetsFragment extends Fragment {
+public class TypeofEachPetsFragment extends Fragment implements TypePetsAdapter.OnClickItemListener {
     int position;
 
     String[][]  dogs={
@@ -99,6 +100,13 @@ public class TypeofEachPetsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new TypePetsAdapter(root.getContext(),listModels);
         recyclerView.setAdapter(adapter);
+        adapter.setOnClickItemListener(TypeofEachPetsFragment.this);
         return root;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(root.getContext(),position+"",Toast.LENGTH_LONG).show();
+        getFragmentManager().beginTransaction().replace(R.id.frame_layout,new DetailOfPetsFragment()).commit();
     }
 }

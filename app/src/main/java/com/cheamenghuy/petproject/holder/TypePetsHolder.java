@@ -19,5 +19,6 @@ public class TypePetsHolder extends RecyclerView.ViewHolder {
         super(itemView);
         imageView_type_of_pets = itemView.findViewById(R.id.img_type_of_care);
         textView_name_type_of_pets = itemView.findViewById(R.id.tv_type_of_care);
+        cardView = itemView.findViewById(R.id.card_view_type_of_pets);
     }
 }
