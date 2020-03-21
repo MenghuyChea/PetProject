@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -17,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class CareActivity extends AppCompatActivity {
 
    BottomNavigationView bottomNavigationView;
+   String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,11 @@ public class CareActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.btn_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(navigation);
+        Intent intent = getIntent();
+        username = intent.getStringExtra("uname");
 
         //default fragment
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new HomeFragment(username)).commit();
       }
       private BottomNavigationView.OnNavigationItemSelectedListener navigation = new
               BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -37,7 +41,7 @@ public class CareActivity extends AppCompatActivity {
                       Fragment fragment = null;
                       switch (item.getItemId()){
                           case R.id.btn_home:
-                              fragment = new HomeFragment();
+                              fragment = new HomeFragment(username);
                               break;
                           case R.id.btn_search:
                               fragment = new SearchFragment();
@@ -49,7 +53,7 @@ public class CareActivity extends AppCompatActivity {
                               fragment = new NotificationFragment();
                               break;
                           case R.id.btn_person:
-                              fragment = new PersonFragment();
+                              fragment = new PersonFragment(username);
                               break;
                       }
                       getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,fragment).commit();

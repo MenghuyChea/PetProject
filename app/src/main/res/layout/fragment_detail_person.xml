@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".person.DetailPersonFragment">
+    <LinearLayout
+        android:id="@+id/act_bar"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="#3333FF"
+        android:layout_height="50dp">
+
+
+        <ImageView
+            android:id="@+id/btn_person"
+            android:src="@drawable/btn_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <TextView
+            android:text="Detail Person Data"
+            android:textStyle="bold"
+            android:textColor="#FFFF"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/act_bar"
+        android:id="@+id/path_one"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#3333FF"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/img_profile"
+            android:src="@drawable/person"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+        <TextView
+            android:id="@+id/tv_name_profile"
+            android:text="Soy Sin"
+            android:textColor="@color/Write"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

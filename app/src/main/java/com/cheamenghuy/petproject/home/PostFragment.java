@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.net.Uri;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.cheamenghuy.petproject.R;
 
@@ -25,15 +26,18 @@ import com.cheamenghuy.petproject.R;
 public class PostFragment extends Fragment {
 
     Button button_choose;
+    TextView textView_username;
     ImageView button_back;
     View root;
     Uri imageUri;
     final int CODE_GALLERY_REQUEST= 999;
     final int IMAGE_CODE = 123;
     ImageView imageView;
+    String username;
 
 
-    public PostFragment() {
+    public PostFragment(String username) {
+        this.username = username;
         // Required empty public constructor
     }
 
@@ -46,6 +50,8 @@ public class PostFragment extends Fragment {
         button_choose = root.findViewById(R.id.btn_addphotos);
         imageView = root.findViewById(R.id.image_post);
         button_back = root.findViewById(R.id.btn_backpost);
+        textView_username = root.findViewById(R.id.news_namepropost);
+        textView_username.setText(username);
 
         button_choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +64,7 @@ public class PostFragment extends Fragment {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new HomeFragment()).commit();
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new HomeFragment(username)).commit();
             }
         });
 
