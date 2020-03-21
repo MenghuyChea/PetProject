@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.cheamenghuy.petproject.R;
 import com.cheamenghuy.petproject.adapter.DescAdapter;
@@ -21,8 +22,11 @@ public class DetailOfPetsFragment extends Fragment {
     ViewPager viewPager;
     DescAdapter descAdapter;
     View root;
+    Button buttonBackDes;
+    int typePet;
 
-    public DetailOfPetsFragment() {
+    public DetailOfPetsFragment(int num) {
+        typePet = num;
         // Required empty public constructor
     }
 
@@ -34,6 +38,7 @@ public class DetailOfPetsFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_detail_of_pets, container, false);
         tabLayout = root.findViewById(R.id.tab_layout);
         viewPager = root.findViewById(R.id.view_pager);
+        buttonBackDes = root.findViewById(R.id.btn_backDes);
         descAdapter = new DescAdapter(getFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(descAdapter);
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -53,6 +58,13 @@ public class DetailOfPetsFragment extends Fragment {
             }
         });
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        buttonBackDes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new TypeofEachPetsFragment(typePet)).commit();
+            }
+        });
 
         return root;
     }

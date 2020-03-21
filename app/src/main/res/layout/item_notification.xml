@@ -17,6 +17,7 @@
             <ImageView
                 android:id="@+id/img_profile_notification"
                 android:src="@drawable/ic_launcher_background"
+                android:layout_marginLeft="10dp"
                 android:layout_width="60dp"
                 android:layout_height="60dp"/>
             <LinearLayout

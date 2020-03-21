@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.cheamenghuy.petproject.R;
@@ -56,6 +57,7 @@ public class TypeofEachPetsFragment extends Fragment implements TypePetsAdapter.
     RecyclerView recyclerView;
     TypePetsAdapter adapter;
     ArrayList<TypePetsModel> listModels;
+    Button buttonBackPetType;
 
     View root;
 
@@ -89,8 +91,9 @@ public class TypeofEachPetsFragment extends Fragment implements TypePetsAdapter.
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_type_each_pet, container, false);
         recyclerView = root.findViewById(R.id.recycleView_pets);
+        buttonBackPetType = root.findViewById(R.id.btn_back_petType);
         listModels = new ArrayList<>();
-        String[][] pets = check(position);
+        final String[][] pets = check(position);
         for(int i=0 ; i<pets.length ; i++){
             TypePetsModel model = new TypePetsModel();
             model.setImg(pets[i][1]);
@@ -100,6 +103,13 @@ public class TypeofEachPetsFragment extends Fragment implements TypePetsAdapter.
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new TypePetsAdapter(root.getContext(),listModels);
         recyclerView.setAdapter(adapter);
+
+        buttonBackPetType.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.frame_layout,new CareFragment()).commit();
+            }
+        });
         adapter.setOnClickItemListener(TypeofEachPetsFragment.this);
         return root;
     }
@@ -107,6 +117,6 @@ public class TypeofEachPetsFragment extends Fragment implements TypePetsAdapter.
     @Override
     public void onItemClick(int position) {
         Toast.makeText(root.getContext(),position+"",Toast.LENGTH_LONG).show();
-        getFragmentManager().beginTransaction().replace(R.id.frame_layout,new DetailOfPetsFragment()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.frame_layout,new DetailOfPetsFragment(position)).commit();
     }
 }
