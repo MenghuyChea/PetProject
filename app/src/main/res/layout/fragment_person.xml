@@ -34,16 +34,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:padding="5dp"
+            android:padding="10dp"
             android:id="@+id/btn_post"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_gravity="center"
-                android:background="@drawable/post"
                 android:layout_width="30dp"
-                android:layout_height="30dp"/>
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/post" />
             <TextView
                 android:id="@+id/tv_post_option"
                 android:text="Post"
@@ -57,7 +57,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:padding="5dp"
+            android:padding="10dp"
             android:id="@+id/btn_change_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -80,7 +80,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:padding="5dp"
+            android:padding="10dp"
             android:id="@+id/btn_change_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -103,8 +103,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:padding="5dp"
+            android:padding="10dp"
             android:id="@+id/btn_logout"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
